@@ -20,8 +20,8 @@ class ImageCacheLoader {
             if let data = data {
                 downloadedImage = UIImage(data: data)
             }
-            if  downloadedImage != nil {
-                cache.setObject(downloadedImage!, forKey: url.absoluteString as NSString)
+            if let downloadedImage = downloadedImage {
+                cache.setObject(downloadedImage, forKey: url.absoluteString as NSString)
             }
             DispatchQueue.main.async {
                 completion(downloadedImage)

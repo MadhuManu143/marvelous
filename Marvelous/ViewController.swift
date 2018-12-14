@@ -40,9 +40,12 @@ class ViewController: UIViewController,UITableViewDataSource {
         return marvellousData.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = marvellousTableView.dequeueReusableCell(withIdentifier: "mainCell") as! ViewControllerTableViewCell
-        cell.configureCell(cell, atIndexPath: indexPath, withDataSource : marvellousData[indexPath.row])
-        return cell
+        if let cell = marvellousTableView.dequeueReusableCell(withIdentifier: "mainCell") as? ViewControllerTableViewCell {
+            cell.configureCell(cell, atIndexPath: indexPath, withDataSource : marvellousData[indexPath.row])
+            return cell
+        }else{
+            return UITableViewCell()
+        }
         
     }
     
